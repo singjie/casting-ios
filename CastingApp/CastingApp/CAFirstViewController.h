@@ -1,0 +1,18 @@
+//
+//  CAFirstViewController.h
+//  CastingApp
+//
+//  Created by Lee Sing Jie on 14/7/13.
+//  Copyright (c) 2013 Lee Sing Jie. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface CAFirstViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UIButton *topListButton;
+@property (weak, nonatomic) IBOutlet UIButton *middleListButton;
+@property (weak, nonatomic) IBOutlet UIButton *bottomListButton;
+@property (weak, nonatomic) IBOutlet UIButton *mainButton;
+
+@end
