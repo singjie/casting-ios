@@ -29,9 +29,23 @@
 
 @implementation CAFirstViewController
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    
+    if (self) {
+        [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"casting_active"]
+                      withFinishedUnselectedImage:[UIImage imageNamed:@"casting"]];
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.title = @"Casting Calls";
     
     self.tableView.backgroundColor = [UIColor blackColor];
     self.tableView.tableFooterView = [[UIView alloc] init];

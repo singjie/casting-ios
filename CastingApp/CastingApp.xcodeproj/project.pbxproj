@@ -105,6 +105,33 @@
 		A54D15F517A2E30D00C08367 /* CAManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A54D15F417A2E30D00C08367 /* CAManager.m */; };
 		A54D15F817A2E32B00C08367 /* CAObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A54D15F717A2E32A00C08367 /* CAObject.m */; };
 		A54D15FE17A2E73300C08367 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A54D15FD17A2E73300C08367 /* MBProgressHUD.m */; };
+		A54D164A17A6AC2800C08367 /* RosyWriterVideoProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = A54D164817A6AC1D00C08367 /* RosyWriterVideoProcessor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A54D164C17A6ADD500C08367 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54D164B17A6ADD500C08367 /* AssetsLibrary.framework */; };
+		A54D164E17A6ADF600C08367 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54D164D17A6ADF600C08367 /* MobileCoreServices.framework */; };
+		A54D165117A6AFF500C08367 /* RosyWriterPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = A54D165017A6AFF500C08367 /* RosyWriterPreviewView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A54D165417A6B0E000C08367 /* ShaderUtilities.c in Sources */ = {isa = PBXBuildFile; fileRef = A54D165217A6B0E000C08367 /* ShaderUtilities.c */; };
+		A54D165617A6B0FB00C08367 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54D165517A6B0FB00C08367 /* OpenGLES.framework */; };
+		A54D165917A6B13B00C08367 /* passThrough.fsh in Sources */ = {isa = PBXBuildFile; fileRef = A54D165717A6B13B00C08367 /* passThrough.fsh */; };
+		A54D165A17A6B13B00C08367 /* passThrough.vsh in Sources */ = {isa = PBXBuildFile; fileRef = A54D165817A6B13B00C08367 /* passThrough.vsh */; };
+		A54D165B17A6B15000C08367 /* passThrough.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A54D165717A6B13B00C08367 /* passThrough.fsh */; };
+		A54D165C17A6B15000C08367 /* passThrough.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A54D165817A6B13B00C08367 /* passThrough.vsh */; };
+		A54D165F17A6D13300C08367 /* CATabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A54D165E17A6D13200C08367 /* CATabBarViewController.m */; };
+		A54D166C17A6DBF300C08367 /* profile_active.png in Resources */ = {isa = PBXBuildFile; fileRef = A54D166017A6DBED00C08367 /* profile_active.png */; };
+		A54D166D17A6DBF300C08367 /* profile_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A54D166117A6DBED00C08367 /* profile_active@2x.png */; };
+		A54D166E17A6DBF300C08367 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = A54D166217A6DBEE00C08367 /* profile.png */; };
+		A54D166F17A6DBF300C08367 /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A54D166317A6DBEE00C08367 /* profile@2x.png */; };
+		A54D167017A6DBF300C08367 /* casting_active.png in Resources */ = {isa = PBXBuildFile; fileRef = A54D166417A6DBEF00C08367 /* casting_active.png */; };
+		A54D167117A6DBF300C08367 /* casting_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A54D166517A6DBEF00C08367 /* casting_active@2x.png */; };
+		A54D167217A6DBF300C08367 /* casting.png in Resources */ = {isa = PBXBuildFile; fileRef = A54D166617A6DBEF00C08367 /* casting.png */; };
+		A54D167317A6DBF300C08367 /* casting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A54D166717A6DBF100C08367 /* casting@2x.png */; };
+		A54D167417A6DBF300C08367 /* tabbarroll-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = A54D166817A6DBF100C08367 /* tabbarroll-disabled.png */; };
+		A54D167517A6DBF300C08367 /* tabbarroll-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A54D166917A6DBF100C08367 /* tabbarroll-disabled@2x.png */; };
+		A54D167617A6DBF300C08367 /* tabbarroll.png in Resources */ = {isa = PBXBuildFile; fileRef = A54D166A17A6DBF100C08367 /* tabbarroll.png */; };
+		A54D167717A6DBF300C08367 /* tabbarroll@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A54D166B17A6DBF300C08367 /* tabbarroll@2x.png */; };
+		A54D167C17A6E2AA00C08367 /* recording.png in Resources */ = {isa = PBXBuildFile; fileRef = A54D167817A6E2A800C08367 /* recording.png */; };
+		A54D167D17A6E2AA00C08367 /* recording@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A54D167917A6E2A800C08367 /* recording@2x.png */; };
+		A54D167E17A6E2AA00C08367 /* buyscript.png in Resources */ = {isa = PBXBuildFile; fileRef = A54D167A17A6E2A900C08367 /* buyscript.png */; };
+		A54D167F17A6E2AA00C08367 /* buyscript@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A54D167B17A6E2A900C08367 /* buyscript@2x.png */; };
 		A59E670717A01A76008643F8 /* CACastingCallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A59E670617A01A76008643F8 /* CACastingCallCell.m */; };
 		A59E670A17A02678008643F8 /* tabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = A59E670817A02677008643F8 /* tabbar.png */; };
 		A59E670B17A02678008643F8 /* tabbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A59E670917A02678008643F8 /* tabbar@2x.png */; };
@@ -301,6 +328,35 @@
 		A54D15F717A2E32A00C08367 /* CAObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAObject.m; sourceTree = "<group>"; };
 		A54D15FC17A2E73300C08367 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		A54D15FD17A2E73300C08367 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		A54D164717A6AC1D00C08367 /* RosyWriterVideoProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RosyWriterVideoProcessor.h; sourceTree = "<group>"; };
+		A54D164817A6AC1D00C08367 /* RosyWriterVideoProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RosyWriterVideoProcessor.m; sourceTree = "<group>"; };
+		A54D164B17A6ADD500C08367 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		A54D164D17A6ADF600C08367 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A54D164F17A6AFF500C08367 /* RosyWriterPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RosyWriterPreviewView.h; sourceTree = "<group>"; };
+		A54D165017A6AFF500C08367 /* RosyWriterPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RosyWriterPreviewView.m; sourceTree = "<group>"; };
+		A54D165217A6B0E000C08367 /* ShaderUtilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ShaderUtilities.c; sourceTree = "<group>"; };
+		A54D165317A6B0E000C08367 /* ShaderUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderUtilities.h; sourceTree = "<group>"; };
+		A54D165517A6B0FB00C08367 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		A54D165717A6B13B00C08367 /* passThrough.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = passThrough.fsh; sourceTree = "<group>"; };
+		A54D165817A6B13B00C08367 /* passThrough.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = passThrough.vsh; sourceTree = "<group>"; };
+		A54D165D17A6D13200C08367 /* CATabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CATabBarViewController.h; sourceTree = "<group>"; };
+		A54D165E17A6D13200C08367 /* CATabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CATabBarViewController.m; sourceTree = "<group>"; };
+		A54D166017A6DBED00C08367 /* profile_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_active.png; sourceTree = "<group>"; };
+		A54D166117A6DBED00C08367 /* profile_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_active@2x.png"; sourceTree = "<group>"; };
+		A54D166217A6DBEE00C08367 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
+		A54D166317A6DBEE00C08367 /* profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile@2x.png"; sourceTree = "<group>"; };
+		A54D166417A6DBEF00C08367 /* casting_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = casting_active.png; sourceTree = "<group>"; };
+		A54D166517A6DBEF00C08367 /* casting_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "casting_active@2x.png"; sourceTree = "<group>"; };
+		A54D166617A6DBEF00C08367 /* casting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = casting.png; sourceTree = "<group>"; };
+		A54D166717A6DBF100C08367 /* casting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "casting@2x.png"; sourceTree = "<group>"; };
+		A54D166817A6DBF100C08367 /* tabbarroll-disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbarroll-disabled.png"; sourceTree = "<group>"; };
+		A54D166917A6DBF100C08367 /* tabbarroll-disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbarroll-disabled@2x.png"; sourceTree = "<group>"; };
+		A54D166A17A6DBF100C08367 /* tabbarroll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbarroll.png; sourceTree = "<group>"; };
+		A54D166B17A6DBF300C08367 /* tabbarroll@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbarroll@2x.png"; sourceTree = "<group>"; };
+		A54D167817A6E2A800C08367 /* recording.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recording.png; sourceTree = "<group>"; };
+		A54D167917A6E2A800C08367 /* recording@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recording@2x.png"; sourceTree = "<group>"; };
+		A54D167A17A6E2A900C08367 /* buyscript.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buyscript.png; sourceTree = "<group>"; };
+		A54D167B17A6E2A900C08367 /* buyscript@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buyscript@2x.png"; sourceTree = "<group>"; };
 		A59E670517A01A76008643F8 /* CACastingCallCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CACastingCallCell.h; sourceTree = "<group>"; };
 		A59E670617A01A76008643F8 /* CACastingCallCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CACastingCallCell.m; sourceTree = "<group>"; };
 		A59E670817A02677008643F8 /* tabbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar.png; sourceTree = "<group>"; };
@@ -312,6 +368,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A54D165617A6B0FB00C08367 /* OpenGLES.framework in Frameworks */,
+				A54D164E17A6ADF600C08367 /* MobileCoreServices.framework in Frameworks */,
+				A54D164C17A6ADD500C08367 /* AssetsLibrary.framework in Frameworks */,
 				A52E5182179278700078BA90 /* QuartzCore.framework in Frameworks */,
 				A52E5180179278670078BA90 /* MessageUI.framework in Frameworks */,
 				A52E50C01792574F0078BA90 /* CoreMedia.framework in Frameworks */,
@@ -339,6 +398,9 @@
 		A52E50661792490F0078BA90 = {
 			isa = PBXGroup;
 			children = (
+				A54D165517A6B0FB00C08367 /* OpenGLES.framework */,
+				A54D164D17A6ADF600C08367 /* MobileCoreServices.framework */,
+				A54D164B17A6ADD500C08367 /* AssetsLibrary.framework */,
 				A52E5181179278700078BA90 /* QuartzCore.framework */,
 				A52E517F179278670078BA90 /* MessageUI.framework */,
 				A52E50BF1792574F0078BA90 /* CoreMedia.framework */,
@@ -374,6 +436,14 @@
 		A52E50781792490F0078BA90 /* CastingApp */ = {
 			isa = PBXGroup;
 			children = (
+				A54D165217A6B0E000C08367 /* ShaderUtilities.c */,
+				A54D165317A6B0E000C08367 /* ShaderUtilities.h */,
+				A54D164F17A6AFF500C08367 /* RosyWriterPreviewView.h */,
+				A54D165017A6AFF500C08367 /* RosyWriterPreviewView.m */,
+				A54D164717A6AC1D00C08367 /* RosyWriterVideoProcessor.h */,
+				A54D164817A6AC1D00C08367 /* RosyWriterVideoProcessor.m */,
+				A54D165D17A6D13200C08367 /* CATabBarViewController.h */,
+				A54D165E17A6D13200C08367 /* CATabBarViewController.m */,
 				A52E50811792490F0078BA90 /* CAAppDelegate.h */,
 				A52E50821792490F0078BA90 /* CAAppDelegate.m */,
 				A52E508A1792490F0078BA90 /* MainStoryboard.storyboard */,
@@ -388,6 +458,8 @@
 				A52E50901792490F0078BA90 /* first.png */,
 				A52E50921792490F0078BA90 /* first@2x.png */,
 				A52E50941792490F0078BA90 /* CASecondViewController.h */,
+				A54D165717A6B13B00C08367 /* passThrough.fsh */,
+				A54D165817A6B13B00C08367 /* passThrough.vsh */,
 				A52E50951792490F0078BA90 /* CASecondViewController.m */,
 				A52E50B8179252370078BA90 /* CACaptureViewController.h */,
 				A52E50B9179252370078BA90 /* CACaptureViewController.m */,
@@ -409,6 +481,22 @@
 				A52E518B1792A2E40078BA90 /* SJFileManager.m */,
 				A59E670817A02677008643F8 /* tabbar.png */,
 				A59E670917A02678008643F8 /* tabbar@2x.png */,
+				A54D166017A6DBED00C08367 /* profile_active.png */,
+				A54D166117A6DBED00C08367 /* profile_active@2x.png */,
+				A54D166217A6DBEE00C08367 /* profile.png */,
+				A54D166317A6DBEE00C08367 /* profile@2x.png */,
+				A54D166417A6DBEF00C08367 /* casting_active.png */,
+				A54D166517A6DBEF00C08367 /* casting_active@2x.png */,
+				A54D166617A6DBEF00C08367 /* casting.png */,
+				A54D166717A6DBF100C08367 /* casting@2x.png */,
+				A54D166817A6DBF100C08367 /* tabbarroll-disabled.png */,
+				A54D166917A6DBF100C08367 /* tabbarroll-disabled@2x.png */,
+				A54D166A17A6DBF100C08367 /* tabbarroll.png */,
+				A54D166B17A6DBF300C08367 /* tabbarroll@2x.png */,
+				A54D167817A6E2A800C08367 /* recording.png */,
+				A54D167917A6E2A800C08367 /* recording@2x.png */,
+				A54D167A17A6E2A900C08367 /* buyscript.png */,
+				A54D167B17A6E2A900C08367 /* buyscript@2x.png */,
 				A54D15FB17A2E73300C08367 /* MBProgressHUD */,
 				A52E50E11792776C0078BA90 /* SSToolkit */,
 				A52E50C11792750B0078BA90 /* AFNetworking */,
@@ -670,6 +758,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A54D165B17A6B15000C08367 /* passThrough.fsh in Resources */,
+				A54D165C17A6B15000C08367 /* passThrough.vsh in Resources */,
 				A52E507D1792490F0078BA90 /* InfoPlist.strings in Resources */,
 				A52E50851792490F0078BA90 /* Default.png in Resources */,
 				A52E50871792490F0078BA90 /* Default@2x.png in Resources */,
@@ -683,6 +773,22 @@
 				A52E518617928BD70078BA90 /* stop@2x.png in Resources */,
 				A59E670A17A02678008643F8 /* tabbar.png in Resources */,
 				A59E670B17A02678008643F8 /* tabbar@2x.png in Resources */,
+				A54D166C17A6DBF300C08367 /* profile_active.png in Resources */,
+				A54D166D17A6DBF300C08367 /* profile_active@2x.png in Resources */,
+				A54D166E17A6DBF300C08367 /* profile.png in Resources */,
+				A54D166F17A6DBF300C08367 /* profile@2x.png in Resources */,
+				A54D167017A6DBF300C08367 /* casting_active.png in Resources */,
+				A54D167117A6DBF300C08367 /* casting_active@2x.png in Resources */,
+				A54D167217A6DBF300C08367 /* casting.png in Resources */,
+				A54D167317A6DBF300C08367 /* casting@2x.png in Resources */,
+				A54D167417A6DBF300C08367 /* tabbarroll-disabled.png in Resources */,
+				A54D167517A6DBF300C08367 /* tabbarroll-disabled@2x.png in Resources */,
+				A54D167617A6DBF300C08367 /* tabbarroll.png in Resources */,
+				A54D167717A6DBF300C08367 /* tabbarroll@2x.png in Resources */,
+				A54D167C17A6E2AA00C08367 /* recording.png in Resources */,
+				A54D167D17A6E2AA00C08367 /* recording@2x.png in Resources */,
+				A54D167E17A6E2AA00C08367 /* buyscript.png in Resources */,
+				A54D167F17A6E2AA00C08367 /* buyscript@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,6 +898,12 @@
 				A54D15F517A2E30D00C08367 /* CAManager.m in Sources */,
 				A54D15F817A2E32B00C08367 /* CAObject.m in Sources */,
 				A54D15FE17A2E73300C08367 /* MBProgressHUD.m in Sources */,
+				A54D164A17A6AC2800C08367 /* RosyWriterVideoProcessor.m in Sources */,
+				A54D165117A6AFF500C08367 /* RosyWriterPreviewView.m in Sources */,
+				A54D165417A6B0E000C08367 /* ShaderUtilities.c in Sources */,
+				A54D165917A6B13B00C08367 /* passThrough.fsh in Sources */,
+				A54D165A17A6B13B00C08367 /* passThrough.vsh in Sources */,
+				A54D165F17A6D13300C08367 /* CATabBarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -911,10 +1023,14 @@
 		A52E50B41792490F0078BA90 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CastingApp/CastingApp-Prefix.pch";
 				INFOPLIST_FILE = "CastingApp/CastingApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

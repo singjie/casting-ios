@@ -11,92 +11,93 @@
 #import <AVFoundation/AVFoundation.h>
 #import <MessageUI/MessageUI.h>
 
-@interface CACaptureViewController () <AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate>
+#import "RosyWriterPreviewView.h"
+#import "RosyWriterVideoProcessor.h"
 
-@property (nonatomic, strong) AVCaptureVideoDataOutput *videoDataOutput;
-@property (nonatomic, strong) AVCaptureMovieFileOutput *movieFileOutput;
-@property (nonatomic, strong) dispatch_queue_t videoDataOutputQueue;
+#import "MBProgressHUD.h"
+
+@interface CACaptureViewController () <AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate, RosyWriterVideoProcessorDelegate>
+
+@property (nonatomic, assign) BOOL isRecording;
+
+@property (nonatomic, strong) UIImageView *recordingImage;
+
+@property (nonatomic, strong) RosyWriterVideoProcessor *videoProcessor;
 
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *previewLayer;
 
-@property (nonatomic, assign) BOOL isRecording;
+@property (nonatomic, strong) UITextView *textView;
+
+@property (nonatomic, strong) NSTimer *timer;
+
+@property (nonatomic, strong) UILabel *timeLabel;
+
+@property (nonatomic, strong) NSDate *startDate;
+
 @end
 
 @implementation CACaptureViewController
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveA:) name:@"a" object:nil];
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self setupAVCapture];
+//    [self setupAVCapture];
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(didTriggerOneSecondTimer:) userInfo:nil repeats:YES];
     
     self.view.backgroundColor = [UIColor colorWithRed:47.0/255 green:47.0/255 blue:47.0/255 alpha:1];
     
     self.debugLabel.textColor = [UIColor whiteColor];
-}
-
-- (void)setupAVCapture
-{
-	NSError *error = nil;
-	
-	AVCaptureSession *session = [[AVCaptureSession alloc] init];
+    self.debugLabel.hidden = YES;
     
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        [session setSessionPreset:AVCaptureSessionPresetLow];
-    } else {
-	    [session setSessionPreset:AVCaptureSessionPresetPhoto];
-    }
-	
-    // Select a video device, make an input
-	AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-	AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
-	
-	if ( [session canAddInput:deviceInput] )
-		[session addInput:deviceInput];
-	
-    // Make a video data output
-	self.videoDataOutput = [AVCaptureVideoDataOutput new];
-	
-    // we want BGRA, both CoreGraphics and OpenGL work well with 'BGRA'
-	NSDictionary *rgbOutputSettings = [NSDictionary dictionaryWithObject:
-									   [NSNumber numberWithInt:kCMPixelFormat_32BGRA] forKey:(id)kCVPixelBufferPixelFormatTypeKey];
-	[self.videoDataOutput setVideoSettings:rgbOutputSettings];
-	[self.videoDataOutput setAlwaysDiscardsLateVideoFrames:YES]; // discard if the data output queue is blocked (as we process the still image)
+    // Initialize the class responsible for managing AV capture session and asset writer
+    self.videoProcessor = [[RosyWriterVideoProcessor alloc] init];
+	self.videoProcessor.delegate = self;
     
-    // create a serial dispatch queue used for the sample buffer delegate as well as when a still image is captured
-    // a serial dispatch queue must be used to guarantee that video frames will be delivered in order
-    // see the header doc for setSampleBufferDelegate:queue: for more information
-	self.videoDataOutputQueue = dispatch_queue_create("VideoDataOutputQueue", DISPATCH_QUEUE_SERIAL);
-	[self.videoDataOutput setSampleBufferDelegate:self queue:self.videoDataOutputQueue];
-	
-    if ( [session canAddOutput:self.videoDataOutput] )
-		[session addOutput:self.videoDataOutput];
+    [self.videoProcessor setupAndStartCaptureSession];
     
-	[[self.videoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:NO];
+    self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:[self.videoProcessor captureSession]];
     
+    [self.previewLayer setBackgroundColor:[[UIColor blackColor] CGColor]];
+    [self.previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+    CALayer *rootLayer = [self.previewView layer];
+    [rootLayer setMasksToBounds:YES];
+    [self.previewLayer setFrame:[rootLayer bounds]];
+    [rootLayer addSublayer:self.previewLayer];
     
-	NSLog(@"Adding movie file output");
-	self.movieFileOutput = [[AVCaptureMovieFileOutput alloc] init];
-	
-	Float64 TotalSeconds = 60;			//Total seconds
-	int32_t preferredTimeScale = 30;	//Frames per second
-	CMTime maxDuration = CMTimeMakeWithSeconds(TotalSeconds, preferredTimeScale);	//<<SET MAX DURATION
-	self.movieFileOutput.maxRecordedDuration = maxDuration;
-	
-	self.movieFileOutput.minFreeDiskSpaceLimit = 1024 * 1024;						//<<SET MIN FREE SPACE IN BYTES FOR RECORDING TO CONTINUE ON A VOLUME
-	
-	if ([session canAddOutput:self.movieFileOutput])
-		[session addOutput:self.movieFileOutput];
-	
-    //	effectiveScale = 1.0;
-	self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
-	[self.previewLayer setBackgroundColor:[[UIColor blackColor] CGColor]];
-	[self.previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-	CALayer *rootLayer = [self.previewView layer];
-	[rootLayer setMasksToBounds:YES];
-	[self.previewLayer setFrame:[rootLayer bounds]];
-	[rootLayer addSublayer:self.previewLayer];
-	[session startRunning];
+    self.recordingImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"recording"]];
+    self.recordingImage.frame = CGRectMake(109, 16, self.recordingImage.frame.size.width, self.recordingImage.frame.size.height);
+    self.recordingImage.hidden = YES;
+    
+    [self.previewView addSubview:self.recordingImage];
+    
+    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.previewView.frame), self.view.frame.size.width, 80)];
+    self.textView.text = @"Smile! Once you are ready, please proceed with the recording. You will be given 3 tries. Good luck!";
+    self.textView.font = [UIFont boldSystemFontOfSize:20];
+    self.textView.textColor = [UIColor whiteColor];
+    self.textView.backgroundColor = [UIColor clearColor];
+    self.textView.hidden = YES;
+    self.textView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    
+    [self.view addSubview:self.textView];
+    
+    self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.recordingImage.frame) + 2, CGRectGetMinY(self.recordingImage.frame), 100, 18)];
+    self.timeLabel.backgroundColor = [UIColor clearColor];
+    self.timeLabel.textColor = [UIColor lightGrayColor];
+    self.timeLabel.hidden = YES;
+    [self.view addSubview:self.timeLabel];
 }
 
 - (void)didReceiveMemoryWarning
@@ -105,63 +106,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
-{
-    
-}
-
 - (void)startRecording
 {
     self.isRecording = YES;
     self.debugLabel.text = @"Recording";
-    //Create temporary URL to record to
-    NSString *outputPath = [[NSString alloc] initWithFormat:@"%@%@", NSTemporaryDirectory(), @"output.mov"];
-    NSURL *outputURL = [[NSURL alloc] initFileURLWithPath:outputPath];
+    self.textView.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a nisl nunc. Morbi dictum mi vitae odio porttitor, vitae pharetra turpis scelerisque. Vestibulum venenatis, sapien at scelerisque facilisis, metus tortor mattis augue, non dictum dui purus a mi. In ut nunc tincidunt mauris hendrerit interdum vel eu dolor. Quisque iaculis lobortis turpis, in auctor nibh auctor nec. Proin congue, sem non faucibus dictum, enim nulla ornare tellus, a scelerisque magna nibh eget justo. Morbi sit amet faucibus lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum dui nisi, adipiscing commodo consequat nec, commodo at nisl. Donec fringilla elementum eleifend. Suspendisse et sapien at lorem vestibulum gravida non eget lorem. Maecenas vel sem erat. Praesent lobortis justo eget augue viverra bibendum.";
     
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if ([fileManager fileExistsAtPath:outputPath])
-    {
-        NSError *error;
-        if ([fileManager removeItemAtPath:outputPath error:&error] == NO)
-        {
-            //Error - handle if requried
-        }
-    }
-    
-    //Start recording
-    [self.movieFileOutput startRecordingToOutputFileURL:outputURL
-                                      recordingDelegate:self];
+    self.startDate = [NSDate date];
+    [self.videoProcessor startRecording];
 }
 
 - (void)stopRecording
 {
     self.debugLabel.text = @"Stop Recording";
     self.isRecording = NO;
-    [self.movieFileOutput stopRecording];
-}
-
-- (void)captureOutput:(AVCaptureFileOutput *)captureOutput didStartRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections
-{
-    NSLog(@"writing:%@", fileURL);
-}
-
-- (void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error
-{
-    NSLog(@"finished:%@", outputFileURL);
-    NSLog(@"Uploading video");
-    
-    NSString *outputPath = [[NSString alloc] initWithFormat:@"%@%@", NSTemporaryDirectory(), @"output.mov"];
-    NSData *data = [NSData dataWithContentsOfFile:outputPath];
-    
-    NSLog(@"data.length:%d", data.length);
-    
-    self.debugLabel.text = [NSString stringWithFormat:@"Uploading :%d", data.length];
-    
-    [[CAClient sharedInstance] uploadVideo:data onCompletion:^(id responseObject, NSError *error) {
-        NSLog(@"Completed uploading");
-        
-        self.debugLabel.text = @"Uploaded.";
-    }];
+ 
+    [self.videoProcessor stopRecording];
 }
 
 - (IBAction)didTapCaptureButton:(id)sender
@@ -171,5 +131,116 @@
     } else {
         [self startRecording];
     }
+    
+    self.textView.hidden = !self.isRecording;
+    self.textView.contentOffset = CGPointZero;
+    self.recordingImage.hidden = !self.isRecording;
+    self.timeLabel.hidden = !self.isRecording;
+}
+
+- (void)recordingWillStart
+{
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
+- (void)recordingDidStart
+{
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
+- (void)recordingWillStop
+{
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
+- (void)recordingDidStopWithData:(NSData *)data
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self hudShowLoading];
+        
+        NSLog(@"%@, %d", NSStringFromSelector(_cmd), data.length);
+        
+        self.debugLabel.text = [NSString stringWithFormat:@"Uploading :%d", data.length];
+        
+        [[CAClient sharedInstance] uploadVideo:data onCompletion:^(id responseObject, NSError *error) {
+            NSLog(@"Completed uploading");
+            [self hudShowSuccessful:@"Uploaded successfully"];
+            
+            self.debugLabel.text = @"Uploaded.";
+        }];
+    });
+}
+
+- (void)didReceiveA:(id)sender
+{
+    self.tabBarController.selectedViewController = self;
+    self.textView.hidden = NO;
+    self.textView.contentOffset = CGPointZero;
+}
+
+- (void)didTriggerOneSecondTimer:(id)sender
+{
+    self.textView.contentOffset = CGPointMake(self.textView.contentOffset.x, self.textView.contentOffset.y + 0.5);
+    
+    NSTimeInterval timeInterval = [self.startDate timeIntervalSinceNow] * -1;
+    self.timeLabel.text = [NSString stringWithFormat:@"00:%02d", (int)timeInterval];
+}
+
+#pragma mark - HUD
+
+- (void)hudShowLoading
+{
+    [self hudShowLoadingInView:self.view];
+}
+
+- (void)hudShowLoadingInView:(UIView *)view
+{
+    [MBProgressHUD hideAllHUDsForView:view animated:YES];
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    hud.labelText = @"Loading...";
+    [hud hide:YES afterDelay:30];
+}
+
+- (void)hudShowSuccessful:(NSString *)successful
+{
+    [self hudShowSuccessful:successful inView:self.view];
+}
+
+- (void)hudShowSuccessful:(NSString *)successful inView:(UIView *)view
+{
+    [MBProgressHUD hideAllHUDsForView:view animated:YES];
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"19-check"]];
+    hud.mode = MBProgressHUDModeCustomView;
+    hud.labelText = successful;
+    [hud hide:YES afterDelay:1.25];
+}
+
+- (void)hudShowError:(NSString *)error
+{
+    [self hudShowError:error inView:self.view];
+}
+
+- (void)hudShowError:(NSString *)error inView:(UIView *)view
+{
+    [MBProgressHUD hideAllHUDsForView:view animated:YES];
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    hud.mode = MBProgressHUDModeCustomView;
+    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"20-no"]];
+    hud.labelText = error;
+    [hud hide:YES afterDelay:1.25];
+}
+
+- (void)hudHide
+{
+    [self hudHideInView:self.view];
+}
+
+- (void)hudHideInView:(UIView *)view
+{
+    [MBProgressHUD hideAllHUDsForView:view animated:YES];
 }
 @end

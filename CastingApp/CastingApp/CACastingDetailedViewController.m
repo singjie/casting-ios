@@ -26,6 +26,8 @@
 @property (nonatomic, strong) UILabel *requirementsLabel;
 @property (nonatomic, strong) UILabel *requirementsText;
 
+@property (nonatomic, strong) UIButton *buyScript;
+
 @end
 
 @implementation CACastingDetailedViewController
@@ -65,6 +67,11 @@
     self.requirementsText.font = [UIFont systemFontOfSize:12];
     [self themeLabel:self.requirementsText];
     
+    self.buyScript = [[UIButton alloc] initWithFrame:CGRectMake(195, CGRectGetMaxY(self.castingImageView.frame) + 179, 119, 40)];
+    [self.buyScript setBackgroundImage:[UIImage imageNamed:@"buyscript"] forState:UIControlStateNormal];
+    [self.buyScript addTarget:self action:@selector(didTapBuyScript:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //390/348
     [self.view addSubview:self.castingImageView];
     
     [self.view addSubview:self.aboutLabel];
@@ -73,6 +80,7 @@
     [self.view addSubview:self.hiringText];
     [self.view addSubview:self.requirementsLabel];
     [self.view addSubview:self.requirementsText];
+    [self.view addSubview:self.buyScript];
     
     self.view.backgroundColor = [UIColor colorWithRed:63.0/255 green:63.0/255 blue:71.0/255 alpha:1];
     
@@ -113,6 +121,13 @@
 {
     label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor whiteColor];
+}
+
+- (void)didTapBuyScript:(id)sender
+{
+    self.tabBarController.selectedIndex = 1;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"a" object:nil];
 }
 
 @end

@@ -14,6 +14,18 @@
 
 @implementation CASecondViewController
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    
+    if (self) {
+        [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"profile_active"]
+                      withFinishedUnselectedImage:[UIImage imageNamed:@"profile"]];
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
