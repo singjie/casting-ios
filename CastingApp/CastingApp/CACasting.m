@@ -8,6 +8,8 @@
 
 #import "CACasting.h"
 
+#import "CAManager.h"
+
 @implementation CACasting
 
 + (CACasting *)castingDictionary:(NSDictionary *)dictionary
@@ -23,6 +25,10 @@
     casting.desc = [dictionary objectForKey:@"description"];
     casting.imageURL = [dictionary objectForKey:@"image"];
     casting.kind = [[dictionary objectForKey:@"kind"] integerValue];
+    casting.name = [dictionary objectForKey:@"name"];
+    casting.requirements = [dictionary objectForKey:@"requirements"];
+    
+    casting.manager = [[CAManager alloc] initWithDictionary:[dictionary objectForKey:@"manager"]];
     
     return casting;
 }

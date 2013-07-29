@@ -12,6 +12,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    
+    tabBarController.tabBar.backgroundImage = [UIImage imageNamed:@"tabbar"];
+    tabBarController.tabBar.selectedImageTintColor = [UIColor orangeColor];
+    tabBarController.tabBar.selectionIndicatorImage = [[UIImage alloc] init];
+    
+    NSLog(@"tabbar:%@", tabBarController.tabBar);
     // Override point for customization after application launch.
     return YES;
 }

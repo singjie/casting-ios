@@ -10,9 +10,6 @@
 
 @interface CAFirstViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIButton *topListButton;
-@property (weak, nonatomic) IBOutlet UIButton *middleListButton;
-@property (weak, nonatomic) IBOutlet UIButton *bottomListButton;
-@property (weak, nonatomic) IBOutlet UIButton *mainButton;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

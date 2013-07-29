@@ -29,6 +29,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self setupAVCapture];
+    
+    self.view.backgroundColor = [UIColor colorWithRed:47.0/255 green:47.0/255 blue:47.0/255 alpha:1];
+    
+    self.debugLabel.textColor = [UIColor whiteColor];
 }
 
 - (void)setupAVCapture
@@ -38,7 +42,7 @@
 	AVCaptureSession *session = [[AVCaptureSession alloc] init];
     
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        [session setSessionPreset:AVCaptureSessionPreset352x288];
+        [session setSessionPreset:AVCaptureSessionPresetLow];
     } else {
 	    [session setSessionPreset:AVCaptureSessionPresetPhoto];
     }

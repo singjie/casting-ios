@@ -51,10 +51,51 @@ static NSString *kClientBaseURL = @"http://localhost:3000";
     return self;
 }
 
-- (void)requestListOnCompletion:(void (^)(NSArray *results, NSError *error))completion
+- (void)requestLatestOnCompletion:(void (^)(NSArray *results, NSError *error))completion
 {
     NSLog(@"request");
     [self getPath:@"castings/latest" parameters:nil success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
+        NSMutableArray *responses = [NSMutableArray arrayWithCapacity:responseObject.count];
+        
+        for (NSDictionary *castDict in responseObject) {
+            CACasting *casting = [CACasting castingDictionary:castDict];
+            
+            [responses addObject:casting];
+        }
+        
+        NSLog(@"ResponseObject:%@", responseObject);
+        completion(responses, nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error:%@", error);
+        nil;
+    }];
+}
+
+- (void)requestPopularOnCompletion:(void (^)(NSArray *results, NSError *error))completion
+{
+    NSLog(@"request");
+    [self getPath:@"castings/popular" parameters:nil success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
+        NSMutableArray *responses = [NSMutableArray arrayWithCapacity:responseObject.count];
+        
+        for (NSDictionary *castDict in responseObject) {
+            CACasting *casting = [CACasting castingDictionary:castDict];
+            
+            [responses addObject:casting];
+        }
+        
+        NSLog(@"ResponseObject:%@", responseObject);
+        completion(responses, nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error:%@", error);
+        nil;
+    }];
+}
+
+
+- (void)requestInviteOnCompletion:(void (^)(NSArray *results, NSError *error))completion
+{
+    NSLog(@"request");
+    [self getPath:@"castings/invite" parameters:nil success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
         NSMutableArray *responses = [NSMutableArray arrayWithCapacity:responseObject.count];
         
         for (NSDictionary *castDict in responseObject) {

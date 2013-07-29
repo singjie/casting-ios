@@ -100,6 +100,14 @@
 		A52E51891792A2CA0078BA90 /* CAImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A52E51881792A2CA0078BA90 /* CAImageCache.m */; };
 		A52E518F1792A8510078BA90 /* CACasting.m in Sources */ = {isa = PBXBuildFile; fileRef = A52E518E1792A8500078BA90 /* CACasting.m */; };
 		A52E51901792A98E0078BA90 /* SJFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A52E518B1792A2E40078BA90 /* SJFileManager.m */; };
+		A54D15EF17A2D27E00C08367 /* CACastingCallMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A54D15EE17A2D27E00C08367 /* CACastingCallMenuCell.m */; };
+		A54D15F217A2D7A400C08367 /* CACastingDetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A54D15F117A2D7A400C08367 /* CACastingDetailedViewController.m */; };
+		A54D15F517A2E30D00C08367 /* CAManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A54D15F417A2E30D00C08367 /* CAManager.m */; };
+		A54D15F817A2E32B00C08367 /* CAObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A54D15F717A2E32A00C08367 /* CAObject.m */; };
+		A54D15FE17A2E73300C08367 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A54D15FD17A2E73300C08367 /* MBProgressHUD.m */; };
+		A59E670717A01A76008643F8 /* CACastingCallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A59E670617A01A76008643F8 /* CACastingCallCell.m */; };
+		A59E670A17A02678008643F8 /* tabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = A59E670817A02677008643F8 /* tabbar.png */; };
+		A59E670B17A02678008643F8 /* tabbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A59E670917A02678008643F8 /* tabbar@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -283,6 +291,20 @@
 		A52E518B1792A2E40078BA90 /* SJFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJFileManager.m; sourceTree = "<group>"; };
 		A52E518D1792A84E0078BA90 /* CACasting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CACasting.h; sourceTree = "<group>"; };
 		A52E518E1792A8500078BA90 /* CACasting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CACasting.m; sourceTree = "<group>"; };
+		A54D15ED17A2D27E00C08367 /* CACastingCallMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CACastingCallMenuCell.h; sourceTree = "<group>"; };
+		A54D15EE17A2D27E00C08367 /* CACastingCallMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CACastingCallMenuCell.m; sourceTree = "<group>"; };
+		A54D15F017A2D7A400C08367 /* CACastingDetailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CACastingDetailedViewController.h; sourceTree = "<group>"; };
+		A54D15F117A2D7A400C08367 /* CACastingDetailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CACastingDetailedViewController.m; sourceTree = "<group>"; };
+		A54D15F317A2E30D00C08367 /* CAManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAManager.h; sourceTree = "<group>"; };
+		A54D15F417A2E30D00C08367 /* CAManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAManager.m; sourceTree = "<group>"; };
+		A54D15F617A2E32A00C08367 /* CAObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAObject.h; sourceTree = "<group>"; };
+		A54D15F717A2E32A00C08367 /* CAObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAObject.m; sourceTree = "<group>"; };
+		A54D15FC17A2E73300C08367 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		A54D15FD17A2E73300C08367 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		A59E670517A01A76008643F8 /* CACastingCallCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CACastingCallCell.h; sourceTree = "<group>"; };
+		A59E670617A01A76008643F8 /* CACastingCallCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CACastingCallCell.m; sourceTree = "<group>"; };
+		A59E670817A02677008643F8 /* tabbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar.png; sourceTree = "<group>"; };
+		A59E670917A02678008643F8 /* tabbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -357,6 +379,12 @@
 				A52E508A1792490F0078BA90 /* MainStoryboard.storyboard */,
 				A52E508D1792490F0078BA90 /* CAFirstViewController.h */,
 				A52E508E1792490F0078BA90 /* CAFirstViewController.m */,
+				A54D15F017A2D7A400C08367 /* CACastingDetailedViewController.h */,
+				A54D15F117A2D7A400C08367 /* CACastingDetailedViewController.m */,
+				A54D15ED17A2D27E00C08367 /* CACastingCallMenuCell.h */,
+				A54D15EE17A2D27E00C08367 /* CACastingCallMenuCell.m */,
+				A59E670517A01A76008643F8 /* CACastingCallCell.h */,
+				A59E670617A01A76008643F8 /* CACastingCallCell.m */,
 				A52E50901792490F0078BA90 /* first.png */,
 				A52E50921792490F0078BA90 /* first@2x.png */,
 				A52E50941792490F0078BA90 /* CASecondViewController.h */,
@@ -369,12 +397,19 @@
 				A52E51881792A2CA0078BA90 /* CAImageCache.m */,
 				A52E518D1792A84E0078BA90 /* CACasting.h */,
 				A52E518E1792A8500078BA90 /* CACasting.m */,
+				A54D15F317A2E30D00C08367 /* CAManager.h */,
+				A54D15F417A2E30D00C08367 /* CAManager.m */,
+				A54D15F617A2E32A00C08367 /* CAObject.h */,
+				A54D15F717A2E32A00C08367 /* CAObject.m */,
 				A52E50971792490F0078BA90 /* second.png */,
 				A52E50991792490F0078BA90 /* second@2x.png */,
 				A52E518317928BD60078BA90 /* stop.png */,
 				A52E518417928BD60078BA90 /* stop@2x.png */,
 				A52E518A1792A2E30078BA90 /* SJFileManager.h */,
 				A52E518B1792A2E40078BA90 /* SJFileManager.m */,
+				A59E670817A02677008643F8 /* tabbar.png */,
+				A59E670917A02678008643F8 /* tabbar@2x.png */,
+				A54D15FB17A2E73300C08367 /* MBProgressHUD */,
 				A52E50E11792776C0078BA90 /* SSToolkit */,
 				A52E50C11792750B0078BA90 /* AFNetworking */,
 				A52E50791792490F0078BA90 /* Supporting Files */,
@@ -554,6 +589,15 @@
 			path = SSToolkit;
 			sourceTree = "<group>";
 		};
+		A54D15FB17A2E73300C08367 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				A54D15FC17A2E73300C08367 /* MBProgressHUD.h */,
+				A54D15FD17A2E73300C08367 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -637,6 +681,8 @@
 				A52E509A1792490F0078BA90 /* second@2x.png in Resources */,
 				A52E518517928BD70078BA90 /* stop.png in Resources */,
 				A52E518617928BD70078BA90 /* stop@2x.png in Resources */,
+				A59E670A17A02678008643F8 /* tabbar.png in Resources */,
+				A59E670B17A02678008643F8 /* tabbar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -740,6 +786,12 @@
 				A52E51891792A2CA0078BA90 /* CAImageCache.m in Sources */,
 				A52E518F1792A8510078BA90 /* CACasting.m in Sources */,
 				A52E51901792A98E0078BA90 /* SJFileManager.m in Sources */,
+				A59E670717A01A76008643F8 /* CACastingCallCell.m in Sources */,
+				A54D15EF17A2D27E00C08367 /* CACastingCallMenuCell.m in Sources */,
+				A54D15F217A2D7A400C08367 /* CACastingDetailedViewController.m in Sources */,
+				A54D15F517A2E30D00C08367 /* CAManager.m in Sources */,
+				A54D15F817A2E32B00C08367 /* CAObject.m in Sources */,
+				A54D15FE17A2E73300C08367 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -920,6 +972,7 @@
 				A52E50B41792490F0078BA90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A52E50B51792490F0078BA90 /* Build configuration list for PBXNativeTarget "CastingAppTests" */ = {
 			isa = XCConfigurationList;
@@ -928,6 +981,7 @@
 				A52E50B71792490F0078BA90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
